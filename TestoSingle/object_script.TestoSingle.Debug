@@ -1,0 +1,12 @@
+INPUT(
+./debug\main.o
+./debug\tszWinFrame.o
+./debug\tszQtCtrlModel.o
+./debug\tszQtCtrlDelegate.o
+./debug\tszQtCtrlCreat.o
+./debug\tszAddAttribute.o
+./debug\qrc_head.o
+./debug\moc_tszWinFrame.o
+./debug\moc_tszQtCtrlModel.o
+./debug\moc_tszQtCtrlDelegate.o
+);

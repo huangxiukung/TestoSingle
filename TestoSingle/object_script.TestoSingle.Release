@@ -1,0 +1,12 @@
+INPUT(
+./release\main.o
+./release\tszWinFrame.o
+./release\tszQtCtrlModel.o
+./release\tszQtCtrlDelegate.o
+./release\tszQtCtrlCreat.o
+./release\tszAddAttribute.o
+./release\qrc_head.o
+./release\moc_tszWinFrame.o
+./release\moc_tszQtCtrlModel.o
+./release\moc_tszQtCtrlDelegate.o
+);
