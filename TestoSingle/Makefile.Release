@@ -455,8 +455,7 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean
 
 ####### Compile
 
-release/main.o: main.cpp tszQtCtrlListView.h \
-		tszWinFrame.h \
+release/main.o: main.cpp tszWinFrame.h \
 		../../QT/5.7/mingw53_32/include/QtWidgets/QFrame \
 		../../QT/5.7/mingw53_32/include/QtWidgets/qframe.h \
 		../../QT/5.7/mingw53_32/include/QtWidgets/qwidget.h \
@@ -580,6 +579,7 @@ release/main.o: main.cpp tszQtCtrlListView.h \
 		../../QT/5.7/mingw53_32/include/QtWidgets/qlayout.h \
 		../../QT/5.7/mingw53_32/include/QtWidgets/qlayoutitem.h \
 		../../QT/5.7/mingw53_32/include/QtWidgets/qgridlayout.h \
+		tszQtCtrlListView.h \
 		tszQtCtrlDelegate.h \
 		../../QT/5.7/mingw53_32/include/QtWidgets/QItemDelegate \
 		../../QT/5.7/mingw53_32/include/QtWidgets/qitemdelegate.h \
@@ -1004,11 +1004,13 @@ release/tszQtCtrlDelegate.o: tszQtCtrlDelegate.cpp tszQtCtrlDelegate.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\tszQtCtrlDelegate.o tszQtCtrlDelegate.cpp
 
 release/tszQtCtrlListView.o: tszQtCtrlListView.cpp tszQtCtrlListView.h \
-		tszWinFrame.h \
-		../../QT/5.7/mingw53_32/include/QtWidgets/QFrame \
-		../../QT/5.7/mingw53_32/include/QtWidgets/qframe.h \
-		../../QT/5.7/mingw53_32/include/QtWidgets/qwidget.h \
-		../../QT/5.7/mingw53_32/include/QtGui/qwindowdefs.h \
+		tszQtCtrlDelegate.h \
+		../../QT/5.7/mingw53_32/include/QtWidgets/QItemDelegate \
+		../../QT/5.7/mingw53_32/include/QtWidgets/qitemdelegate.h \
+		../../QT/5.7/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qobject.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qobjectdefs.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qnamespace.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qglobal.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qconfig.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qfeatures.h \
@@ -1031,11 +1033,7 @@ release/tszQtCtrlListView.o: tszQtCtrlListView.cpp tszQtCtrlListView.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qmutex.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qnumeric.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qversiontagging.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qobjectdefs.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qnamespace.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qobjectdefs_impl.h \
-		../../QT/5.7/mingw53_32/include/QtGui/qwindowdefs_win.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qobject.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qstring.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qchar.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qbytearray.h \
@@ -1057,32 +1055,44 @@ release/tszQtCtrlListView.o: tszQtCtrlListView.cpp tszQtCtrlListView.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qvarlengtharray.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qcontainerfwd.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qobject_impl.h \
+		../../QT/5.7/mingw53_32/include/QtWidgets/qstyleoption.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qvariant.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qmap.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qdebug.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qhash.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qtextstream.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qiodevice.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qlocale.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qshareddata.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qvector.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qpoint.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qset.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qcontiguouscache.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qsharedpointer.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.7/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		../../QT/5.7/mingw53_32/include/QtWidgets/qwidget.h \
+		../../QT/5.7/mingw53_32/include/QtGui/qwindowdefs.h \
+		../../QT/5.7/mingw53_32/include/QtGui/qwindowdefs_win.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qmargins.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qpaintdevice.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qrect.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qsize.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qpoint.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qpalette.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qcolor.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qrgb.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qrgba64.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qbrush.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qvector.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qmatrix.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qpolygon.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qregion.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qdatastream.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qiodevice.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qline.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qtransform.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qpainterpath.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qimage.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qpixelformat.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qpixmap.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qsharedpointer.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qshareddata.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qhash.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qsharedpointer_impl.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qfont.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qfontmetrics.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qfontinfo.h \
@@ -1090,29 +1100,12 @@ release/tszQtCtrlListView.o: tszQtCtrlListView.cpp tszQtCtrlListView.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qcursor.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qkeysequence.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qevent.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qvariant.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qmap.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qdebug.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qtextstream.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qlocale.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qset.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qcontiguouscache.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qurl.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qurlquery.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qfile.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qfiledevice.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qvector2d.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
-		../../QT/5.7/mingw53_32/include/QtWidgets/QListWidget \
-		../../QT/5.7/mingw53_32/include/QtWidgets/qlistwidget.h \
-		../../QT/5.7/mingw53_32/include/QtWidgets/qlistview.h \
-		../../QT/5.7/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		../../QT/5.7/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		../../QT/5.7/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		../../QT/5.7/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		../../QT/5.7/mingw53_32/include/QtWidgets/qstyleoption.h \
-		../../QT/5.7/mingw53_32/include/QtWidgets/qabstractspinbox.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qvalidator.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qregularexpression.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qicon.h \
@@ -1122,18 +1115,16 @@ release/tszQtCtrlListView.o: tszQtCtrlListView.cpp tszQtCtrlListView.h \
 		../../QT/5.7/mingw53_32/include/QtWidgets/qtabbar.h \
 		../../QT/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
 		../../QT/5.7/mingw53_32/include/QtWidgets/qrubberband.h \
-		../../QT/5.7/mingw53_32/include/QtWidgets/QListView \
-		../../QT/5.7/mingw53_32/include/QtWidgets/QVBoxLayout \
-		../../QT/5.7/mingw53_32/include/QtWidgets/qboxlayout.h \
-		../../QT/5.7/mingw53_32/include/QtWidgets/qlayout.h \
-		../../QT/5.7/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		../../QT/5.7/mingw53_32/include/QtWidgets/qgridlayout.h \
-		tszQtCtrlDelegate.h \
-		../../QT/5.7/mingw53_32/include/QtWidgets/QItemDelegate \
-		../../QT/5.7/mingw53_32/include/QtWidgets/qitemdelegate.h \
+		../../QT/5.7/mingw53_32/include/QtWidgets/qframe.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		tszQtCtrlModel.h \
 		../../QT/5.7/mingw53_32/include/QtCore/QAbstractListModel \
 		../../QT/5.7/mingw53_32/include/QtCore/QString \
+		../../QT/5.7/mingw53_32/include/QtWidgets/QListView \
+		../../QT/5.7/mingw53_32/include/QtWidgets/qlistview.h \
+		../../QT/5.7/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		../../QT/5.7/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		../../QT/5.7/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		../../QT/5.7/mingw53_32/include/QtWidgets/QApplication \
 		../../QT/5.7/mingw53_32/include/QtWidgets/qapplication.h \
 		../../QT/5.7/mingw53_32/include/QtCore/qcoreapplication.h \
@@ -1141,12 +1132,6 @@ release/tszQtCtrlListView.o: tszQtCtrlListView.cpp tszQtCtrlListView.h \
 		../../QT/5.7/mingw53_32/include/QtWidgets/qdesktopwidget.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qguiapplication.h \
 		../../QT/5.7/mingw53_32/include/QtGui/qinputmethod.h \
-		../../QT/5.7/mingw53_32/include/QtCore/QDebug \
-		../../QT/5.7/mingw53_32/include/QtWidgets/QMessageBox \
-		../../QT/5.7/mingw53_32/include/QtWidgets/qmessagebox.h \
-		../../QT/5.7/mingw53_32/include/QtWidgets/qdialog.h \
-		../../QT/5.7/mingw53_32/include/QtWidgets/QMainWindow \
-		../../QT/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
 		../../QT/5.7/mingw53_32/include/QtGui/QKeyEvent \
 		../../QT/5.7/mingw53_32/include/QtCore/QTime \
 		../../QT/5.7/mingw53_32/include/QtCore/qdatetime.h

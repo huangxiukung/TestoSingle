@@ -39,142 +39,77 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-
+    qDebug()<<"test";
     tszWinFrame *w = new tszWinFrame();
     tszQtCtrlListView *tszListview = new tszQtCtrlListView(360,480);
     QVBoxLayout *m_pLayout = new QVBoxLayout();
     m_pLayout->addWidget(tszListview);
-
-//    listview->setListViewSize(w,h);
-
-//    listview->CreateItem(w,h);
-
-//    listview->setItemSize(w,h);
-
-//    listview->InsertItem(item index,"\image\background.png","setting", "btn");
-
-//    listview->InsertItem(item index,ParM,);
-//    listview->InsertItem(item index,ParM,);
-//    listview->InsertItem(item index,ParM,);
-    //listview->tszSetItemSize(360,90);
-/***************************************************************************
-     *这个的功能是将一个具有实际内存的BUTTON放到LISTVIEW的对应行中，故这样的button是
-     * 是可以实实在在的关联信号与槽的*/
-    /*
-    QIcon icon(":/head/qq.png");
-     //设置按钮的图标
-    QPushButton *btn = new QPushButton(listview);
-    btn->setIcon(icon);
-    btn->setGeometry(300,10,40,40);
-***************************************************************************/
-
-/***************************************************************************
-//    参考代码如下：
-//    QStandardItemModel *model = new QStandardItemModel(ui->listView);
-//    ui->listView->setModel(model);
-//    for(int i = 0; i < 5; i++) {
-//    QStandardItem *item = new QStandardItem(QString::number(i));
-//    model->appendRow(item);
-//    QModelIndex index = model->indexFromItem(item);
-//    QCheckBox *box = new QCheckBox( ui->listView);
-//    box->setCheckable(true);
-//    box->setCheckState(Qt::Unchecked);
-//    box->setText("ssss");
-//    ui->listView->setIndexWidget(index, box);
-***************************************************************************/
-/**************************************************************************
-    tszItemset_T x;
-    x.string = ":/head/5.jpg";
-    x.position = Left;
-
-    tszItemset_T y;
-    y.string = ":/head/2.jpg";
-    y.position = Right;
-
-    tszItemset_T z;
-    z.string = ":/head/1.jpg";
-    z.position = Middle;
-***************************************************************************/
-    QString x = ":/head/5.jpg";
-    QString y = ":/head/1.jpg";
-    QString z = ":/head/3.jpg";
-    //set every item's height
-//    listview->tszSetItemSize(50);
-    for(int i=0; i<100; i++)
-    {
-//        listview->tszInsertItem(0,":/head/qq.png","Hello","World");
-//        listview->tszInsertItem(1,":/head/qq.png","Hello","World");
-
-//        listview->tszappend(x,y,z,ONE);
-//        listview->tszappend(z,y,TWO);
-//        listview->tszappend(x,z,THREE);
-//        listview->tszappend(x,z,FOUR);
-
-        //default
-//        listview->tszappend(2,":/head/9.jpg","how are you",":/head/1.jpg");
-//        listview->tszSetItem(15,BUTTON,":/head/qq.png",Middle);
-//        listview->tszSetItem(15,BUTTON,":/head/9.jpg",Left);
-    }
-
-//    void MainWindow::keyReleaseEvent(QKeyEvent *event) {
-//    #if 0
-//        if (event->key() == Qt::Key_Down) {
-//            ui->fm1->setVisible(false);
-//            ui->fm2->setVisible(true);
-//            myflashlist->setVisible(true);
-//           // event->accept();
-//           // update();
-//        }
-//        if (event->key() == Qt::Key_Up) {
-//            ui->fm1->setVisible(true);
-//            ui->fm2->setVisible(false);
-//            myflashlist->setVisible(false);
-//           // event->accept();
-//           // update();
-//            return;
-//        }
-//    #endif
-//    }
-
-
-
-//     tszItemset_T set1;
-//     set1.position = Left;
-//     tszItemset_T set2;
-//     set2.position = Right;
-//     tszItemset_T set3;
-//     set3.position = Middle;
-
-//     tszItemset_T set4;
-//     set4.position = Left;
-//     set4.string = ":/head/8.jpg";
-
-    // listview->tszSetItem(1,Middle);
-    //qDebug()<<listview->model()->rowCount();
-
-    //listview->tszDeleteItem(1,3);
-    //listview->tszDeleteItem(2);
     w->setLayout(m_pLayout);
     w->show();
-//    这部分数据的改变必须用线程来做，不然会变的非常的卡
-//    while(1)
-//    {
-//        int progress = rand()%100;
 
-//        set1.string = QString::number(progress);
-//        set2.string = QString::number(progress);
-//        set3.string = QString::number(progress);
-//        w->sleep(1);//depend on data transmission speed
-//        listview->tszSetItem(1,set2);
+    QString m_TestStr ;
+    //set every item's height
+    tszListview->ItemSetHeight(50);
+    //item background will cover listview background,must Note one of them
+    //item background
+    tszListview->ItemSetBGPic(":/head/9.jpg");
+    //listview background
+    tszListview->ListViewSetBGPic(":/head/9.jpg");
+    //get item background
+    tszListview->ItemGetBGPic(m_TestStr);
+    qDebug()<<"item background"+m_TestStr;
+    //get listview background
+    tszListview->ListViewGetBGPic(m_TestStr);
+    qDebug()<<"listview background"+m_TestStr;
+    element par1;
+    par1.enElementname = ":/head/1.jpg";
+    par1.enElementpos =  ELEMENT_POS_LEFT;
+    par1.enElementtype = ELEMENT_TYPE_BTN;
 
-//        listview->tszSetItem(2,set1);
-//        listview->tszSetItem(2,set2);
+    element par2;
+    par2.enElementname = ":/head/2.jpg";
+    par2.enElementpos =  ELEMENT_POS_RIGHT;
+    par2.enElementtype = ELEMENT_TYPE_BTN;
 
-//        listview->tszSetItem(3,set1);
-//        listview->tszSetItem(3,set2);
-//        listview->tszSetItem(3,set3);
+    element par3;
+    par3.enElementname = ":/head/3.jpg";
+    par3.enElementpos =  ELEMENT_POS_MID;
+    par3.enElementtype = ELEMENT_TYPE_BTN;
 
-//        listview->tszSetItem(4,set4);
-//    }
+    QString stContext;
+    elementPos pos;
+
+    for(int i=0; i<1; i++)
+    {
+        //create test
+        tszListview->ItemCreate(":/head/9.jpg","hello",":/head/1.jpg");
+        tszListview->ItemCreate(ELEMENT_TYPE_PNG,":/head/1.jpg",ELEMENT_POS_LEFT);
+        tszListview->ItemCreate(ELEMENT_TYPE_TEXT,"head",ELEMENT_POS_RIGHT);
+        tszListview->ItemCreate(ELEMENT_TYPE_BTN,":/head/1.jpg",ELEMENT_POS_MID);
+        tszListview->ItemCreate(par1,par2);
+        tszListview->ItemCreate(par1,par2,par3);
+        tszListview->ItemModify(0,ELEMENT_POS_RIGHT);
+        tszListview->ItemModify(1,CMD_TYPE_ADD,ELEMENT_TYPE_PNG,":/head/1.jpg",ELEMENT_POS_MID);
+        //test Get rid of the notes
+        tszListview->ItemSelectAdd(0,ELEMENT_TYPE_BTN,":/head/2.jpg",ELEMENT_POS_MID);
+        tszListview->ItemSelectAdd(0,par1,par2);
+        tszListview->ItemSelectAdd(0,par1,par2,par3);
+        tszListview->ItemDelete(0);
+        tszListview->ItemDelete(0);
+        tszListview->ItemDelete(0);
+        tszListview->ItemGetContext(0,ELEMENT_TYPE_TEXT,stContext,pos);
+        qDebug()<<"stContext is"<<stContext<<"position is"<<pos;
+    }
+
+    //    This part need used thread to do, or it will be very card
+        while(0)
+        {
+            int progress = rand()%100;
+            w->sleep(1);//depend on data transmission speed
+            tszListview->ItemModify(0,CMD_TYPE_REPLACE,ELEMENT_TYPE_TEXT,QString::number(progress),ELEMENT_POS_MID);
+            tszListview->ItemModify(1,CMD_TYPE_REPLACE,ELEMENT_TYPE_TEXT,QString::number(progress),ELEMENT_POS_RIGHT);
+            tszListview->ItemModify(2,CMD_TYPE_REPLACE,ELEMENT_TYPE_TEXT,QString::number(progress),ELEMENT_POS_LEFT);
+        }
+
        return a.exec();
 }

@@ -24,13 +24,28 @@ typedef struct _tszListCtrlData
     QString stListCtrlRightData;
 }ListCtrlData;
 
+typedef enum _elementType
+{
+    ELEMENT_TYPE_PNG = 0,
+    ELEMENT_TYPE_TEXT,
+    ELEMENT_TYPE_BTN,
+    ELEMENT_TYPE_UNKNOW = 0xFF,
+}elementType;
+
 typedef enum _elementPos
 {
     ELEMENT_POS_LEFT = 0,
-    ELEMENT_POS_RIGHT,
     ELEMENT_POS_MID,
+    ELEMENT_POS_RIGHT,
     ELEMENT_POS_UNKNOW = 0xFF,
 }elementPos;
+
+typedef enum _Command
+{
+    CMD_TYPE_ADD = 0,
+    CMD_TYPE_REPLACE,
+    CMD_TYPE_UNKNOW = 0xFF,
+}Command;
 
 typedef std::vector<ListCtrlData> tszDataInfoVec;
 
@@ -38,7 +53,7 @@ class tszQtCtrlModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    tszQtCtrlModel(int &width, QObject *parent = 0);
+    tszQtCtrlModel(uint32_t &width, QObject *parent = 0);
     ~tszQtCtrlModel();
 public:
     int rowCount ( const QModelIndex & parent = QModelIndex() ) const;
@@ -48,23 +63,23 @@ public:
 
     bool SetModelData(const QModelIndex &index, int row, const QString &changevalue);
     bool AddModelRow(const QModelIndex &index, const ListCtrlData &list);
-    bool AddModelRow(const QModelIndex &index, int &itemIndex, const ListCtrlData &list);
+    bool AddModelRow(const QModelIndex &index, const uint32_t &itemIndex, const ListCtrlData &list);
 
-    bool SetModelItem(const QModelIndex &index, int &itemIndex, elementPos &position, QString &string);
+    bool SetModelItem(const QModelIndex &index, uint32_t &itemIndex, elementPos &position, QString &string);
     bool DeleteModelItem(const QModelIndex &index, int itemIndex);
-    bool DeleteModelItem(const QModelIndex &index, int itemIndex1, int itemIndex2);
-    bool GetItemAttribute(int &row, int enElementType,QString &stContext,QString &enPos );
-    void SetViewItemHeight(int &height);
+    bool GetItemAttribute(uint32_t &row, elementType enElementType, QString &stContext, elementPos &enPos );
+    void SetViewItemHeight(uint32_t &height);
 
-    bool GetButtonFlag(const QModelIndex &index,const int number);
-    bool GetButtonFlag(const QModelIndex &index,const int number,const int row);
+    bool GetButtonFlag(const QModelIndex &index, const uint8_t u8Number);
+    bool GetButtonFlag(const QModelIndex &index,const uint8_t &number,const uint32_t &row);
     bool DeleteButtonFlag(const QModelIndex &index,const int &itemRow);
-    bool ChangeButtonFlag(const QModelIndex &index,const int &changeIndex,
-                             const int type,const int changeFlag);
-    bool SetDrawFoucsflag(const QModelIndex &index, const int currentRow);
+    bool ClearButtonFlag(const QModelIndex &index, uint32_t &u32Row, elementPos &enPos);
+    bool ChangeButtonFlag(const QModelIndex &index, const int &changeIndex,
+                             Command enCmd, const int changeFlag);
+    bool SetDrawFoucsflag(const QModelIndex &index, uint8_t key, const int currentRow);
     bool SetItemBackGround(const QModelIndex &index, const QString &stItemBGPic);
     void GetItemBackGround(QString &string);
-
+    bool JudgeButtonPos(uint32_t row);
 private:
     QVariant SelectShowData(QString SelectOpt) const;
 signals:
@@ -72,11 +87,11 @@ signals:
 
 private:
     tszDataInfoVec List;
-    int width;
-    int height;
+    uint32_t width;
+    uint32_t height;
     int flag;
     QString m_ItemBG;
-    QList<int> m_Flag;//0-7 mark item wheather have button, 0 0 0 、0 0 1、...
+    QList<uint8_t> m_Flag;//0-7 mark item wheather have button, 0 0 0 、0 0 1、...
 };
 
 #endif  /* HEADER_GUARD */
